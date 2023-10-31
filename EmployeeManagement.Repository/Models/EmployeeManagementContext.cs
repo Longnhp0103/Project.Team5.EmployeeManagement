@@ -45,6 +45,12 @@ namespace EmployeeManagement.Repository.Models
             {
                 entity.ToTable("Attendence");
 
+                entity.Property(e => e.Date).HasColumnType("date");
+
+                entity.Property(e => e.EmployeeId)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
                 entity.HasOne(d => d.Employee)
                     .WithMany(p => p.Attendences)
                     .HasForeignKey(d => d.EmployeeId)
@@ -56,11 +62,15 @@ namespace EmployeeManagement.Repository.Models
             {
                 entity.ToTable("Employee");
 
-                entity.HasIndex(e => e.Email, "UQ__Employee__A9D105349489F9AF")
+                entity.HasIndex(e => e.Email, "UQ__Employee__A9D1053404FF1AC4")
                     .IsUnique();
 
-                entity.HasIndex(e => e.UserName, "UQ__Employee__C9F28456509345C5")
+                entity.HasIndex(e => e.UserName, "UQ__Employee__C9F28456EB2BFA18")
                     .IsUnique();
+
+                entity.Property(e => e.Id)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Address)
                     .HasMaxLength(255)
@@ -93,6 +103,7 @@ namespace EmployeeManagement.Repository.Models
                 entity.HasOne(d => d.Team)
                     .WithMany(p => p.Employees)
                     .HasForeignKey(d => d.TeamId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FKEmployee127959");
             });
 
@@ -101,6 +112,10 @@ namespace EmployeeManagement.Repository.Models
                 entity.ToTable("EmployeeWorkingShift");
 
                 entity.Property(e => e.Date).HasColumnType("date");
+
+                entity.Property(e => e.EmployeeId)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
 
                 entity.HasOne(d => d.Employee)
                     .WithMany(p => p.EmployeeWorkingShifts)
@@ -167,6 +182,10 @@ namespace EmployeeManagement.Repository.Models
             {
                 entity.ToTable("StudentOfSemester");
 
+                entity.Property(e => e.StudentId)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
                 entity.HasOne(d => d.Semester)
                     .WithMany(p => p.StudentOfSemesters)
                     .HasForeignKey(d => d.SemesterId)
@@ -184,7 +203,7 @@ namespace EmployeeManagement.Repository.Models
             {
                 entity.ToTable("Team");
 
-                entity.HasIndex(e => e.Name, "UQ__Team__737584F62C3784A8")
+                entity.HasIndex(e => e.Name, "UQ__Team__737584F6CDC7D89C")
                     .IsUnique();
 
                 entity.Property(e => e.Name)
@@ -194,12 +213,6 @@ namespace EmployeeManagement.Repository.Models
                 entity.Property(e => e.Ojttime)
                     .HasColumnType("date")
                     .HasColumnName("OJTTime");
-
-                entity.HasOne(d => d.LeaderNavigation)
-                    .WithMany(p => p.Teams)
-                    .HasForeignKey(d => d.Leader)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FKTeam169163");
 
                 entity.HasOne(d => d.Semester)
                     .WithMany(p => p.Teams)

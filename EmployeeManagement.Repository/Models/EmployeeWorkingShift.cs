@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace EmployeeManagement.Repository.Models
+﻿namespace EmployeeManagement.Repository.Models
 {
     public partial class EmployeeWorkingShift
     {
         public int Id { get; set; }
-        public int EmployeeId { get; set; }
+        public string EmployeeId { get; set; } = null!;
         public DateTime Date { get; set; }
         public bool Status { get; set; }
 

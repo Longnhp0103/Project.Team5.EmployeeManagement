@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace EmployeeManagement.Repository.Models
+﻿namespace EmployeeManagement.Repository.Models
 {
     public partial class ProjectsOfTeam
     {

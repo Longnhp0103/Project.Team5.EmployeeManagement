@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace EmployeeManagement.Repository.Models
+﻿namespace EmployeeManagement.Repository.Models
 {
     public partial class Employee
     {
@@ -10,10 +7,9 @@ namespace EmployeeManagement.Repository.Models
             Attendences = new HashSet<Attendence>();
             EmployeeWorkingShifts = new HashSet<EmployeeWorkingShift>();
             StudentOfSemesters = new HashSet<StudentOfSemester>();
-            Teams = new HashSet<Team>();
         }
 
-        public int Id { get; set; }
+        public string Id { get; set; } = null!;
         public string Name { get; set; } = null!;
         public string? Address { get; set; }
         public bool Gender { get; set; }
@@ -24,13 +20,12 @@ namespace EmployeeManagement.Repository.Models
         public string Password { get; set; } = null!;
         public bool Status { get; set; }
         public int RoleId { get; set; }
-        public int? TeamId { get; set; }
+        public int TeamId { get; set; }
 
         public virtual Role Role { get; set; } = null!;
-        public virtual Team? Team { get; set; }
+        public virtual Team Team { get; set; } = null!;
         public virtual ICollection<Attendence> Attendences { get; set; }
         public virtual ICollection<EmployeeWorkingShift> EmployeeWorkingShifts { get; set; }
         public virtual ICollection<StudentOfSemester> StudentOfSemesters { get; set; }
-        public virtual ICollection<Team> Teams { get; set; }
     }
 }

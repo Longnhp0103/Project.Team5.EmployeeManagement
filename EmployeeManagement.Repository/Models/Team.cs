@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace EmployeeManagement.Repository.Models
+﻿namespace EmployeeManagement.Repository.Models
 {
     public partial class Team
     {
@@ -20,7 +17,6 @@ namespace EmployeeManagement.Repository.Models
         public int SemesterId { get; set; }
         public int Leader { get; set; }
 
-        public virtual Employee LeaderNavigation { get; set; } = null!;
         public virtual Semester Semester { get; set; } = null!;
         public virtual ICollection<Employee> Employees { get; set; }
         public virtual ICollection<ProjectsOfTeam> ProjectsOfTeams { get; set; }
