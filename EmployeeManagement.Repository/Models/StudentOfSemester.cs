@@ -4,7 +4,7 @@
     {
         public int Id { get; set; }
         public int SemesterId { get; set; }
-        public string StudentId { get; set; } = null!;
+        public int StudentId { get; set; }
 
         public virtual Semester Semester { get; set; } = null!;
         public virtual Employee Student { get; set; } = null!;

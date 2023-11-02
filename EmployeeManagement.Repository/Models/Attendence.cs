@@ -3,9 +3,9 @@
     public partial class Attendence
     {
         public int Id { get; set; }
-        public DateTime Date { get; set; }
+        public int Date { get; set; }
         public int Status { get; set; }
-        public string EmployeeId { get; set; } = null!;
+        public int EmployeeId { get; set; }
 
         public virtual Employee Employee { get; set; } = null!;
     }
