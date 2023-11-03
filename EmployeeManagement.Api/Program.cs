@@ -25,7 +25,10 @@ builder.Services.AddScoped<ISemesterService, SemesterService>();
 builder.Services.AddScoped<ITeamWorkingShiftService, TeamWorkingShiftService>();
 builder.Services.AddScoped<IScheduleService, ScheduleService>();
 builder.Services.AddScoped<IRoleService, RoleService>();
+
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

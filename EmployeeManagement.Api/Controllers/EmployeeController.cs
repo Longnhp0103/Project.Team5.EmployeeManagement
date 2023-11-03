@@ -4,8 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeManagement.Api.Controllers
 {
+    [Route("api/[controller]/[action]")]
+    [ApiController]
     public class EmployeeController : Controller
     {
+
         IEmployeeService employeeService;
         public EmployeeController(IEmployeeService employeeService)
         {
