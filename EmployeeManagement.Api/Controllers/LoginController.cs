@@ -56,7 +56,11 @@ namespace EmployeeManagement.Api.Controllers
 
             return Ok(employee);
         }
-
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return Ok();
+        }
 
     }
 }
