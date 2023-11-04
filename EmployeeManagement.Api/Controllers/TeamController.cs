@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace EmployeeManagement.Api.Controllers
+namespace EmployeeManagement.Api.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public class TeamController : ControllerBase
 {
-    [Route("api/[controller]/[action]")]
-    [ApiController]
-    public class TeamController : Controller
+    [HttpGet]
+    public IActionResult Index()
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        return Ok();
     }
 }
