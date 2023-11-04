@@ -27,5 +27,6 @@
         public virtual ICollection<Attendence> Attendences { get; set; }
         public virtual ICollection<EmployeeWorkingShift> EmployeeWorkingShifts { get; set; }
         public virtual ICollection<StudentOfSemester> StudentOfSemesters { get; set; }
+        public bool isAdmin { get; set; }
     }
 }
