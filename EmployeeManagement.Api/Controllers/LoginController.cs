@@ -46,9 +46,9 @@ public class LoginController : ControllerBase
         {
             //if get member from database is null, check if it was the admin
 
-            if (loginInformation.email.Equals(Configuration["Admin:Email"], StringComparison.OrdinalIgnoreCase) && loginInformation.password.Equals(Configuration["Admin:Password"]))
+            if (loginInformation.email.Equals(Configuration["Manager:Email"], StringComparison.OrdinalIgnoreCase) && loginInformation.password.Equals(Configuration["Manager:Password"]))
             {
-                return new Employee { Email = Configuration["Admin:Email"], Password = Configuration["Admin:Password"],isAdmin = true };
+                return new Employee { Email = Configuration["Manager:Email"], Password = Configuration["Manager:Password"] };
             }
 
             return NotFound();
