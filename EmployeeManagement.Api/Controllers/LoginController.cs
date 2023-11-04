@@ -25,11 +25,11 @@ public class LoginController : ControllerBase
         public string password { get; set; }
     }
 
-    //[HttpGet("GetEmployee/{id}")]
-    //public ActionResult<Employee> GetEmployee(int id)
-    //{
-    //    return Ok(employeeService.GetEmployeeById(id));
-    //}
+    [HttpGet("GetEmployee/{id}")]
+    public ActionResult<Employee> GetEmployee(int id)
+    {
+        return Ok(employeeService.GetEmployeeById(id));
+    }
 
     [HttpGet("GetRole/{id}")]
     public ActionResult<Employee> GetStaffAccount(int id)
