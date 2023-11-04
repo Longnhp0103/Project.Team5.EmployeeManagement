@@ -1,4 +1,6 @@
-﻿namespace EmployeeManagement.Repository.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace EmployeeManagement.Repository.Models
 {
     public partial class Employee
     {
@@ -27,6 +29,6 @@
         public virtual ICollection<Attendence> Attendences { get; set; }
         public virtual ICollection<EmployeeWorkingShift> EmployeeWorkingShifts { get; set; }
         public virtual ICollection<StudentOfSemester> StudentOfSemesters { get; set; }
-        
+        [NotMapped] public bool isAdmin { get; set; }
     }
 }

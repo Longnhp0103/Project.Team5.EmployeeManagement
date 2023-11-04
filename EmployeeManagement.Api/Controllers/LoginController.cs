@@ -48,7 +48,7 @@ public class LoginController : ControllerBase
 
             if (loginInformation.email.Equals(Configuration["Manager:Email"], StringComparison.OrdinalIgnoreCase) && loginInformation.password.Equals(Configuration["Manager:Password"]))
             {
-                return new Employee { Email = Configuration["Manager:Email"], Password = Configuration["Manager:Password"] };
+                return new Employee { Email = Configuration["Manager:Email"], Password = Configuration["Manager:Password"], isAdmin = true };
             }
 
             return NotFound();
