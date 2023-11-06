@@ -2,54 +2,53 @@
 using EmployeeManagement.Service;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EmployeeManagement.Api.Controllers
+namespace EmployeeManagement.Api.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public class EmployeeController : ControllerBase
 {
-    [Route("api/[controller]/[action]")]
-    [ApiController]
-    public class EmployeeController : Controller
+
+    IEmployeeService employeeService;
+    public EmployeeController(IEmployeeService employeeService)
     {
+        this.employeeService = employeeService;
+    }
 
-        IEmployeeService employeeService;
-        public EmployeeController(IEmployeeService employeeService)
-        {
-            this.employeeService = employeeService;
-        }
+    [HttpGet("GetAll")]
+    public IActionResult GetAll()
+    {
+        return Ok(employeeService.GetAllEmployee());
+    }
 
-        [HttpGet("GetAll")]
-        public ActionResult<IEnumerable<Employee>> GetAll()
-        {
-            return Ok(employeeService.GetAllEmployee());
-        }
+    [HttpGet("GetEmployee/{id}")]
+    public IActionResult GetEmployee(int id)
+    {
+        return Ok(employeeService.GetEmployeeById(id));
+    }
 
-        [HttpGet("GetEmployee/{id}")]
-        public ActionResult<Employee> GetEmployee(int id)
-        {
-            return Ok(employeeService.GetEmployeeById(id));
-        }
+    [HttpDelete("Delete/{id}")]
+    public ActionResult DeleteEmployee(int id)
+    {
+        employeeService.DeleteEmployee(id);
+        return Ok();
+    }
 
-        [HttpDelete("Delete/{id}")]
-        public ActionResult DeleteEmployee(int id)
-        {
-            employeeService.DeleteEmployee(id);
-            return Ok();
-        }
+    [HttpPut("Update/{id}")]
+    public ActionResult UpdateEmployee(Employee employee)
+    {
+        employeeService.UpdateEmployee(employee);
+        return Ok();
+    }
 
-        [HttpPut("Update/{id}")]
-        public ActionResult UpdateEmployee(Employee employee)
+    [HttpPost("Create")]
+    public ActionResult CreateEmployee(Employee employee)
+    {
+        if (employee == null)
         {
-            employeeService.UpdateEmployee(employee);
-            return Ok();
+            return BadRequest("Data Invalid");
         }
-
-        [HttpPost("Create")]
-        public ActionResult CreateEmployee(Employee employee)
-        {
-            if (employee == null)
-            {
-                return BadRequest("Data Invalid");
-            }
-            employeeService.CreateEmployee(employee);
-            return Ok();
-        }
+        employeeService.CreateEmployee(employee);
+        return Ok();
     }
 }
