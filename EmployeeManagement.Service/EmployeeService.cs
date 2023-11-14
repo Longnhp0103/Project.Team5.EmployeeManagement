@@ -5,6 +5,7 @@ namespace EmployeeManagement.Service
 {
     public class EmployeeService : IEmployeeService
     {
+        
         IEmployeeRepository repository;
         public EmployeeService(IEmployeeRepository repository)
         {
@@ -29,14 +30,25 @@ namespace EmployeeManagement.Service
             return (List<Employee>)repository.GetAll();
         }
 
+        
+
         public Employee GetEmployeeById(int id)
         {
             return repository.GetById(id);
+        }
+
+        public Employee Authentication(string email, string password)
+        {
+            return repository.Authentication(email, password);
         }
 
         public void UpdateEmployee(Employee employee)
         {
             repository.Update(employee);
         }
+
+        
+
     }
+    
 }

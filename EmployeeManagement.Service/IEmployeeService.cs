@@ -9,6 +9,8 @@ namespace EmployeeManagement.Service
         Employee GetEmployeeById(int id);
         void UpdateEmployee(Employee employee);
         void DeleteEmployee(int id);
+        Employee Authentication(string email, string password);
+        
 
     }
 }
