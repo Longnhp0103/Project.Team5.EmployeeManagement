@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EmployeeManagement.Repository.Models;
+using EmployeeManagement.Repository.Repositories;
+using EmployeeManagement.Service;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeManagement.Api.Controllers;
 
@@ -6,9 +9,15 @@ namespace EmployeeManagement.Api.Controllers;
 [Route("api/[controller]")]
 public class SemesterController : ControllerBase
 {
-    [HttpGet]
-    public IActionResult Index()
+    ISemesterService semesterService;
+    public SemesterController(ISemesterService semesterService)
     {
-        return Ok();
+        this.semesterService = semesterService;
+    }
+
+    [HttpGet("GetSemester/{id}")]
+    public ActionResult<Semester> GetSemesterId(int id)
+    {
+        return Ok(semesterService.GetSemesterId(id));
     }
 }
