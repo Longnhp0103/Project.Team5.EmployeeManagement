@@ -1,4 +1,7 @@
-﻿namespace EmployeeManagement.Service
+﻿using EmployeeManagement.Repository.Models;
+using EmployeeManagement.Repository.Repositories;
+
+namespace EmployeeManagement.Service
 {
     public class EmployeeService : IEmployeeService
     {
