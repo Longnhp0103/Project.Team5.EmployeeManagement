@@ -1,11 +1,8 @@
-﻿using EmployeeManagement.Repository.Models;
-using EmployeeManagement.Repository.Repositories;
-
-namespace EmployeeManagement.Service
+﻿namespace EmployeeManagement.Service
 {
     public class EmployeeService : IEmployeeService
     {
-        
+
         IEmployeeRepository repository;
         public EmployeeService(IEmployeeRepository repository)
         {
@@ -30,7 +27,7 @@ namespace EmployeeManagement.Service
             return (List<Employee>)repository.GetAll();
         }
 
-        
+
 
         public Employee GetEmployeeById(int id)
         {
@@ -47,8 +44,8 @@ namespace EmployeeManagement.Service
             repository.Update(employee);
         }
 
-        
+
 
     }
-    
+
 }
