@@ -10,5 +10,6 @@ namespace EmployeeManagement.Service
         void UpdateTeam(Team team);
         void DeleteTeam(int id);
         void CreateTeam(Team team);
+        void CreateTeamWrokingShift(TeamWorkingShift teamWorkingShift);
     }
 }

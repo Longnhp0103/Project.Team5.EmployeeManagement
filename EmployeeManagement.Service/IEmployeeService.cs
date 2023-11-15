@@ -10,7 +10,9 @@ namespace EmployeeManagement.Service
         void UpdateEmployee(Employee employee);
         void DeleteEmployee(int id);
         Employee Authentication(string email, string password);
-        
 
+        void AddToTeam(int memberId, int teamId);
+        void CreateEmployeeWorkingService(EmployeeWorkingShift employeeWorkingShift);
+        void AttendenceEmployee(Attendence attendence);
     }
 }

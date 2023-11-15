@@ -7,13 +7,19 @@ namespace EmployeeManagement.Service
     {
 
         IEmployeeRepository repository;
-        public EmployeeService(IEmployeeRepository repository)
+        IEmployeeWorkingShiftRepository workingShiftRepository;
+        IAttendenceRepository attendenceRepository;
+        public EmployeeService(IEmployeeRepository repository, IEmployeeWorkingShiftRepository workingShiftRepository, IAttendenceRepository attendenceRepository)
         {
             this.repository = repository;
+            this.workingShiftRepository = workingShiftRepository;
+            this.attendenceRepository = attendenceRepository;
         }
         public void CreateEmployee(Employee employee)
         {
             repository.Insert(employee);
+            Employee e = repository.GetEmployeeById(employee.Id);
+            e.Team.MemberNumber++;
         }
 
         public void DeleteEmployee(int id)
@@ -47,8 +53,24 @@ namespace EmployeeManagement.Service
             repository.Update(employee);
         }
 
+        public void AddToTeam(int memberId, int teamId)
+        {
+            Employee employee = repository.GetEmployeeById(memberId);
+            if (employee != null && employee.Team.MemberNumber < 5)
+            {
+                employee.TeamId = teamId;
+            }
+        }
 
+        public void CreateEmployeeWorkingService(EmployeeWorkingShift employeeWorkingShift)
+        {
+            workingShiftRepository.Insert(employeeWorkingShift);
+        }
 
+        public void AttendenceEmployee(Attendence attendence)
+        {
+            attendenceRepository.Insert(attendence);
+        }
     }
 
 }

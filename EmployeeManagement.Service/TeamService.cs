@@ -12,6 +12,8 @@ namespace EmployeeManagement.Service
             this.teamRepository = teamRepository;
             this.workingShiftRepository = teamWorkingShiftRepository;
         }
+
+
         public void CreateTeam(Team team)
         {
             team.MemberNumber = 1;
@@ -19,13 +21,14 @@ namespace EmployeeManagement.Service
             teamRepository.Insert(team);
         }
 
+        public void CreateTeamWrokingShift(TeamWorkingShift teamWorkingShift)
+        {
+            workingShiftRepository.Insert(teamWorkingShift);
+        }
+
         public void DeleteTeam(int id)
         {
-            Team team = teamRepository.GetById(id);
-            if (team != null)
-            {
-                teamRepository.Delete(team.Id);
-            }
+            teamRepository.ChangeTeamStatus(id);
         }
 
         public Team GetTeamById(int id)
@@ -47,6 +50,8 @@ namespace EmployeeManagement.Service
         {
             teamRepository.Update(team);
         }
+
+
 
     }
 }
