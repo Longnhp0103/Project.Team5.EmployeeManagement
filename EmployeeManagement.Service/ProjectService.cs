@@ -10,10 +10,35 @@ namespace EmployeeManagement.Service
         {
             this.repository = repository;
         }
+
+        public void CreateProject(Project project)
+        {
+            repository.Insert(project);
+        }
+
+        public void DeleteProject(int Id)
+        {
+            Project project = repository.GetById(Id);
+            if (project != null)
+            {
+                repository.Delete(project.Id);
+            }
+        }
+
+        public List<Project> GetAllProjects()
+        {
+            return(List<Project>)repository.GetAll();
+        }
+
         public Project GetProjectId(int Id)
         {
             Project projectId = repository.GetById(Id); 
             return projectId;
+        }
+
+        public void UpgradeProject(Project project)
+        {
+            repository.Update(project);
         }
     }
 }
