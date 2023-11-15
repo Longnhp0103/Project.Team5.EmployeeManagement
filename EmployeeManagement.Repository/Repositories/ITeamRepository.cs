@@ -4,5 +4,7 @@ namespace EmployeeManagement.Repository.Repositories
 {
     public interface ITeamRepository : IGenericRepository<Team>
     {
+        Task<Team> GetTeamByName(string name);
+        bool ChangeTeamStatus(int teamId);
     }
 }
