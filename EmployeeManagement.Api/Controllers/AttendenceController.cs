@@ -26,5 +26,11 @@ namespace EmployeeManagement.Api.Controllers
         {
             return Ok(attendenceService.GetAttendenceId(id));
         }
+        [HttpPut("UpdateAttendence/{id}")]
+        public ActionResult UpdateAttendence(Attendence attendence)
+        {
+            attendenceService.updateAttdence(attendence);
+            return Ok();
+        }
     }
 }
