@@ -15,5 +15,10 @@ namespace EmployeeManagement.Service
             Attendence attendence = attendenceRepository.GetById(id);
             return attendence;
         }
+
+        public void updateAttdence(Attendence attendance)
+        {
+            attendenceRepository.Update(attendance);
+        }
     }
 }

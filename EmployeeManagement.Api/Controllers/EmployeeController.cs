@@ -51,4 +51,33 @@ public class EmployeeController : ControllerBase
         employeeService.CreateEmployee(employee);
         return Ok();
     }
+
+    [HttpPut("AddMemberToTeam")]
+    public ActionResult ChangeMemberTeam(int memberId, int teamId)
+    {
+        employeeService.AddToTeam(memberId, teamId);
+        return Ok();
+    }
+
+    [HttpPost("CreateEmployeeWorkingShift")]
+    public ActionResult CreateEmployeeWorkingShift(EmployeeWorkingShift employeeWorkingShift)
+    {
+        if (employeeWorkingShift == null)
+        {
+            return BadRequest("Data Invalid");
+        }
+        employeeService.CreateEmployeeWorkingService(employeeWorkingShift);
+        return Ok();
+    }
+
+    [HttpPost("Attendence")]
+    public ActionResult Attendence(Attendence attendence)
+    {
+        if (attendence == null)
+        {
+            return BadRequest("Data Invalid");
+        }
+        employeeService.AttendenceEmployee(attendence);
+        return Ok();
+    }
 }
