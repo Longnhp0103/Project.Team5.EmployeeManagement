@@ -1,5 +1,6 @@
 ﻿using EmployeeManagement.Repository.Models;
 using EmployeeManagement.Repository.Repositories;
+using System.Collections.Generic;
 
 namespace EmployeeManagement.Service
 {
@@ -13,12 +14,21 @@ namespace EmployeeManagement.Service
 
         public void CreateEmployeeWorkingShift(EmployeeWorkingShift employeeWorkingShift)
         {
-            throw new NotImplementedException();
+            repository.Insert(employeeWorkingShift);
         }
 
         public void DeleteEmployeeWorkingShift(int id)
         {
-            throw new NotImplementedException();
+            EmployeeWorkingShift employeeWorkingShift = repository.GetById(id);
+            if (employeeWorkingShift != null )
+            {
+                repository.Delete(employeeWorkingShift.Id);
+            }
+        }
+
+        public List<EmployeeWorkingShift> GetAll()
+        {
+           return(List<EmployeeWorkingShift>)repository.GetAll();
         }
 
         public EmployeeWorkingShift GetEmployeeWorkingShiftId(int id)
@@ -29,7 +39,7 @@ namespace EmployeeManagement.Service
 
         public void UpdateEmployeeWorkingShift(EmployeeWorkingShift employeeWorkingShift)
         {
-            throw new NotImplementedException();
+            repository.Update(employeeWorkingShift);
         }
     }
 }

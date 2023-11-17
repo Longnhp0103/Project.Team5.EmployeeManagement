@@ -21,27 +21,27 @@ public class ProjectController : ControllerBase
         return Ok(projectService.GetProjectId(id));
     }
 
-    [HttpGet("GetAll")]
+    [HttpGet("GetAllProject")]
     public IActionResult GetAll()
     {
         return Ok(projectService.GetAllProjects());
     }
 
-    [HttpDelete("Delete/{id}")]
+    [HttpDelete("DeleteProject/{id}")]
     public ActionResult DeleteProject(int id)
     {
         projectService.DeleteProject(id);
         return Ok();
     }
 
-    [HttpPut("Update/{id}")]
+    [HttpPut("UpdateProject/{id}")]
     public ActionResult UpdateProject(Project project)
     {
         projectService.UpgradeProject(project);
         return Ok();
     }
 
-    [HttpPost("Create")]
+    [HttpPost("CreateProject")]
     public ActionResult CreateProject(Project project)
     {
         if (project == null)

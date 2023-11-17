@@ -19,5 +19,34 @@ namespace EmployeeManagement.Api.Controllers
         {
             return Ok(employeeWorkingShiftService.GetEmployeeWorkingShiftId(id));
         }
+        [HttpGet("GetAllEmployeeWorkingShift")]
+        public IActionResult GetAll()
+        {
+            return Ok(employeeWorkingShiftService.GetAll());
+        }
+
+        [HttpDelete("DeleteEmployeeWorkingShift/{id}")]
+        public ActionResult Delete(int id)
+        {
+            employeeWorkingShiftService.DeleteEmployeeWorkingShift(id);
+            return Ok();
+        }
+
+        [HttpPut("UpdateEmployeeWorkingShift/{id}")]
+        public ActionResult UpdateEmployeeWorkingShift(EmployeeWorkingShift employeeWorkingShift)
+        {
+            employeeWorkingShiftService.UpdateEmployeeWorkingShift(employeeWorkingShift);
+            return Ok();
+        }
+        [HttpPost("CreateEmployeeWorkingShift")]
+        public ActionResult CreateEmployeeWorkingShift(EmployeeWorkingShift employeeWorkingShift, int id)
+        {
+            if(employeeWorkingShift == null)
+            {
+                return BadRequest("Data Invalid");
+            }
+            employeeWorkingShiftService.CreateEmployeeWorkingShift(employeeWorkingShift);
+            return Ok();
+        }
     }
 }
