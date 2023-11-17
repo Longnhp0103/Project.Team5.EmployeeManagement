@@ -12,27 +12,32 @@ namespace EmployeeManagement.Service
         }
         public void CreateTeamWorkingShift(TeamWorkingShift teamWorkingShift)
         {
-            throw new NotImplementedException();
+            repository.Insert(teamWorkingShift);
         }
 
         public void DeleteTeamWorkingShift(int id)
         {
-            throw new NotImplementedException();
+            TeamWorkingShift teamWorkingShift = repository.GetById(id);
+            if(teamWorkingShift != null)
+            {
+                repository.Delete(teamWorkingShift.Id);
+            }
+
         }
 
         public TeamWorkingShift GetTeamWorkingShiftId(int id)
         {
-            throw new NotImplementedException();
+            return repository.GetById(id);
         }
 
         public List<TeamWorkingShift> GetWorkingShifts()
         {
-            throw new NotImplementedException();
+            return(List<TeamWorkingShift>)repository.GetAll();
         }
 
         public void UpdateTeamWorkingShift(TeamWorkingShift teamWorkingShift)
         {
-            throw new NotImplementedException();
+            repository.Update(teamWorkingShift);
         }
     }
 }
